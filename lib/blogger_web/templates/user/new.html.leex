@@ -1,0 +1,18 @@
+<h2>New User</h2>
+<%= f = form_for @changeset, "#", phx_submit: :create %>
+  <fieldset>
+    <%= label f, :name, for: "nameField" %>
+    <%= text_input f, :name, id: "nameField" %>
+    <%= error_tag f, :name %>
+    <%= label f, :email, for: "emailField" %>
+    <%= text_input f, :email, id: "emailField" %>
+    <%= error_tag f, :email %>
+    <%= label f, :role_id, for: "roleField" %>
+    <%= select f, :role_id, Enum.map(@roles, &{&1.name, &1.id}), id: "roleField" %>
+    <%= error_tag f, :role_id %>
+
+    <div>
+      <%= submit "Create", phx_disable_with: "Creating..." %>
+    </div>
+  </fieldset>
+</form>
